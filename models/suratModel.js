@@ -1,55 +1,66 @@
-let tourPackages = [
+let suratPackages = [
   {
-    id: 1,
-    name: "Paket Wisata Bali Exotis",
-    destination: "Bali",
-    price: 3500000,
-    duration: "4 Hari 3 Malam",
-    quota: 15
+    nosurat : "001/SI/X/2026",
+    perihal: "Surat Laporan Keuangan ",
+    jumlahLampiran : 3,
+    sifat: "biasa",
+    pengirim: "Bendahara Keuangan ",
+    bagianId : 11,
+    createdAt : "3 November 2026"
   },
   {
-    id: 2,
-    name: "Explore Jogja Istimewa",
-    destination: "Yogyakarta",
-    price: 1800000,
-    duration: "3 Hari 2 Malam",
-    quota: 20
-  }
+    nosurat : "002/SI/X/2026",
+    perihal: "Surat Laporan Kesiswaan ",
+    jumlahLampiran : 4,
+    sifat: "isi",
+    pengirim: "Sekretaris",
+    bagianId : 15,
+    createdAt : "3 November 2026"
+  },
+    {
+    nosurat : "003/SI/X/2026",
+    perihal: "Surat Laporan",
+    jumlahLampiran : 6,
+    sifat: "penting",
+    pengirim: "Rektor",
+    bagianId : 14,
+    createdAt : "3 November 2026"
+  },
 ];
 
-class TourModel {
+class SuratModel {
   static getAll() {
-    return tourPackages;
+    return suratPackages;
   }
 
   static getById(id) {
-    return tourPackages.find(pkg => pkg.id === id);
+    return suratPackages.find(pkg => pkg.id === id);
   }
 
   static create(data) {
     const newPackage = {
-      id: tourPackages.length > 0 ? tourPackages[tourPackages.length - 1].id + 1 : 1,
+      nosurat: suratPackages.length > 0 ? suratPackages[suratPackages.length - 1].id + 1 : 1,
       ...data
     };
-    tourPackages.push(newPackage);
+    suratPackages.push(newPackage);
     return newPackage;
   }
 
-  static update(id, data) {
-    const index = tourPackages.findIndex(pkg => pkg.id === id);
+  static update(nosurat, perihal) {
+    const index = suratPackages.findIndex(pkg => pkg.id === id);
     if (index === -1) return null;
 
-    tourPackages[index] = { ...tourPackages[index], ...data };
-    return tourPackages[index];
+    suratPackages[index] = { ...suratPackages[index], ...data };
+    return suratPackages[index];
   }
 
   static delete(id) {
-    const index = tourPackages.findIndex(pkg => pkg.id === id);
+    const index = suratPackages.findIndex(pkg => pkg.id === id);
     if (index === -1) return null;
 
-    const deleted = tourPackages.splice(index, 1);
+    const deleted = suratPackages.splice(index, 1);
     return deleted[0];
   }
 }
 
-module.exports = TourModel;
+module.exports = SuratModel;
