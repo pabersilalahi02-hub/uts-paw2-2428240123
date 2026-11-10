@@ -1,15 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const tourController = require('../controllers/tourController');
-const apiKeyMiddleware = require('../middlewares/apiKeyMiddleware');
+const suratController = require('../controllers/suratController');
 
-// Proteksi seluruh rute tours dengan API Key
-router.use(apiKeyMiddleware);
-
-router.get('/', tourController.getAllTourPackages);
-router.get('/:id', tourController.getTourPackageById);
-router.post('/', tourController.createTourPackage);
-router.put('/:id', tourController.updateTourPackage);
-router.delete('/:id', tourController.deleteTourPackage);
+router.post('/', suratController.createSurat);
+router.get('/', suratController.getSurat);
+router.get('/:id', suratController.getSuratById);
 
 module.exports = router;
