@@ -1,6 +1,6 @@
 const loggerMiddleware = (req, res, next) => {
-  const time = new Date().toISOString();
-  console.log(`[${time}] ${req.method} ${req.originalUrl}`);
+  const timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] ${req.method} ${req.originalUrl}`);
   next();
 };
 
